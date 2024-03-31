@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Main from "./components/Main";
+import Signup from "./components/Singup";
+import Login from "./components/Login";
+import BookmarkList from './components/Main/BookmarkList';
+import AllDashboardRoutes from './components/Main/AllDashboardRoutes';
+import AddCollections from './components/Main/AddCollection';
 
 function App() {
+  const user = localStorage.getItem("token");
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/dashboard" />} />
+        <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
+        {user ? (
+          <Route path='/dashboard' element={<Main />} >
+            <Route index element={<BookmarkList />} />
+            <Route  path=':id' element={<AllDashboardRoutes/>}/>
+            <Route  path='add-collection' element={<AddCollections/>}/>
+            <Route path=':collections/:id' element={<AllDashboardRoutes />} />
+          </Route>
+        ) : (
+          <Route path='/dashboard' element={<Navigate to="/login"/>} />
+        )}
+      </Routes>
+    </Router>
   );
 }
 
