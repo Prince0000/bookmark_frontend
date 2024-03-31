@@ -29,7 +29,7 @@ const Main = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = `http://localhost:8080/api/collections`;
+				const url = `https://loud-liquid-production.up.railway.app/api/collections`;
 				const response = await axios.get(url);
 				setCollections(response.data); // Set collections in state
 			} catch (error) {
@@ -60,7 +60,7 @@ const Main = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `http://localhost:8080/api/bookmark`;
+			const url = `https://loud-liquid-production.up.railway.app/api/bookmark`;
 			const response = await axios.post(url, formData); // Send form data to the server
 			toast.success(response.data.message); // Show success toast
 			console.log(response.data); // Log response for testing
