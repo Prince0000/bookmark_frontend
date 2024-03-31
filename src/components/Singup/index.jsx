@@ -23,7 +23,7 @@ const Signup = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const url = "http://localhost:8080/api/users";
+            const url = "https://loud-liquid-production.up.railway.app/api/users";
             const { data: res } = await axios.post(url, data);
             navigate("/login");
             toast.success(res.message); 
