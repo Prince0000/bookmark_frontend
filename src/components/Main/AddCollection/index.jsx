@@ -16,7 +16,7 @@ const AddCollections = () => {
     const fetchData = async () => {
         setLoading(true); // Show loader while fetching data
         try {
-            const url = `http://localhost:8080/api/collections?page=${currentPage}&limit=${itemsPerPage}`;
+            const url = `https://loud-liquid-production.up.railway.app/api/collections?page=${currentPage}&limit=${itemsPerPage}`;
             const response = await axios.get(url);
             setCollections(response.data); // Set collections in state
         } catch (error) {
@@ -35,7 +35,7 @@ const AddCollections = () => {
         e.preventDefault();
         setLoading(true); // Show loader when form is submitted
         try {
-            const url = "http://localhost:8080/api/collections";
+            const url = "https://loud-liquid-production.up.railway.app/api/collections";
             const { data: res } = await axios.post(url, data);
             toast.success(res.message);
             setData({ name: "", Desc: "" });
@@ -59,7 +59,7 @@ const AddCollections = () => {
         if (window.confirm("Are you sure you want to delete this collection?")) {
             setLoading(true); // Show loader when deleting
             try {
-                const url = `http://localhost:8080/api/collections/${id}`;
+                const url = `https://loud-liquid-production.up.railway.app/api/collections/${id}`;
                 await axios.delete(url);
                 toast.success("Collection deleted successfully");
                 fetchData();
