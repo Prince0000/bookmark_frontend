@@ -19,7 +19,7 @@ const ItemDetail = () => {
 
   const fetchData = async () => {
     try {
-      const url = `http://localhost:8080/api/bookmark/${fetchType}/${id}/${decodedToken._id}`;
+      const url = `https://loud-liquid-production.up.railway.app/api/bookmark/${fetchType}/${id}/${decodedToken._id}`;
       const response = await axios.get(url);
       setBookmarks(response.data);
     } catch (error) {
@@ -34,7 +34,7 @@ const ItemDetail = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this collection?")) {
       try {
-        const url = `http://localhost:8080/api/bookmark/${id}`;
+        const url = `https://loud-liquid-production.up.railway.app/api/bookmark/${id}`;
         await axios.delete(url);
         toast.success("Bookmark deleted successfully");
         fetchData();
