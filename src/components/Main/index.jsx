@@ -207,7 +207,7 @@ const Main = () => {
 									</div>
 									<div className="form-group mb-2">
 										<label htmlFor="tags">Tags</label>
-										<input type="text" className="form-control" id="tags" required={true} name="tags" value={formData.tags} onChange={handleChange} placeholder="Enter Tags" />
+										<input type="text" className="form-control" id="tags" required={true} name="tags" value={formData.tags} onChange={handleChange} placeholder="Enter Tags with ',' Seprated " />
 									</div>
 									<div className="form-group mb-2">
 										<label htmlFor="url">URL</label>
