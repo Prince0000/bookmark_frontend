@@ -16,7 +16,7 @@ const BookmarkList = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const url = `http://localhost:8080/api/bookmark/${decodedToken._id}?page=${currentPage}&limit=${itemsPerPage}`;
+            const url = `https://loud-liquid-production.up.railway.app/api/bookmark/${decodedToken._id}?page=${currentPage}&limit=${itemsPerPage}`;
             const response = await axios.get(url);
             setBookmarks(response.data);
         } catch (error) {
